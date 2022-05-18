@@ -10,15 +10,18 @@ function Login() {
     const onSubmit = async ({email}) => {
         const did_Token = await magic.auth.loginWithMagicLink({email})
         console.log(did_Token)
-        let header = {
-            token: `Bearer ${did_Token}`,
-            "Content-type": "application/json; charset=UTF-8"
+
+        const header = {
+            authorization: `Bearer ${did_Token}`,
+            "Content-type": 'application/json',
+            "accept": 'application/json'
         }
-        fetch("https://sics-python.herokuapp.com/login", {
-            method: 'POST',
+        fetch("https://sics-python.herokuapp.com", {
+            mode: 'no-cors',
+            method: 'GET',
             headers: header
         }).then(async (resp) => {
-            let response = await resp.json();
+            const response = await resp.json();
             console.log(response)
         })
     };
