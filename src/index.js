@@ -5,4 +5,4 @@ import "./styles.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Login/>);
-process.env.CI = false;
+// process.env.CI = false;

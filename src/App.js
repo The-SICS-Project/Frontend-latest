@@ -2,6 +2,8 @@ import Logo from './Logo.svg'
 import {Helmet} from 'react-helmet';
 import {Magic} from 'magic-sdk';
 import {useForm} from "react-hook-form";
+//import login from "./login";
+//import axios from "axios";
 
 
 function Login() {
@@ -10,20 +12,20 @@ function Login() {
     const onSubmit = async ({email}) => {
         const did_Token = await magic.auth.loginWithMagicLink({email})
         console.log(did_Token)
-
-        const header = {
-            authorization: `Bearer ${did_Token}`,
-            "Content-type": 'application/json',
-            "accept": 'application/json'
-        }
-        fetch("https://sics-python.herokuapp.com", {
-            mode: 'no-cors',
+        const options = {
             method: 'GET',
-            headers: header
-        }).then(async (resp) => {
-            const response = await resp.json();
-            console.log(response)
-        })
+            headers: {
+                Authorization: 'Bearer '+did_Token
+            }
+        };
+
+        fetch('https://sics-node-test.herokuapp.com/api/home', options)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .catch(err => console.error(err));
+
+
+
     };
     return (
 
@@ -53,10 +55,18 @@ function Login() {
 }
 
 export default Login;
-//let header = {
-//     token: `Bearer ${did_token}`
-// }
-// fetch("https://sics-python.herokuapp.com/login", {
-//     method: 'POST',
-//     headers: header
-// }).then()
+
+
+
+// fetch("https://sics-python.herokuapp.com/",{
+//     mode: 'no-cors',
+//     method: 'GET',
+//     header: {
+//         authorization: "Bearer " + did_Token,
+//         "Content-type": 'application/json',
+//         "accept": 'application/json'
+//     },
+// }).then(async  (resp) => {
+//     const response = await resp.json();
+//     console.log(response)
+// })
