@@ -15,11 +15,11 @@ function Login() {
         const options = {
             method: 'GET',
             headers: {
-                Authorization: 'Bearer '+did_Token
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZW50aG9tYXM2NzhAZ21haWwuY29tIiwidXNlcklkIjoiMTMiLCJpYXQiOjE2NTM4ODgzODJ9.oyJBSTmkYH8oozq6LWrDrkZUXxEHi77tpxdM50NupcE'
             }
         };
 
-        fetch('https://20ucnlvbni.execute-api.ap-south-1.amazonaws.com/beta/v1/login', options)
+        fetch('https://sics-back.herokuapp.com/ api/home', options)
             .then(response => response.json())
             .then(response => console.log(response))
             .catch(err => console.error(err));
