@@ -19,7 +19,7 @@ function Login() {
             }
         };
 
-        fetch('https://sics-node-test.herokuapp.com/api/home', options)
+        fetch('https://20ucnlvbni.execute-api.ap-south-1.amazonaws.com/beta/v1/login', options)
             .then(response => response.json())
             .then(response => console.log(response))
             .catch(err => console.error(err));
