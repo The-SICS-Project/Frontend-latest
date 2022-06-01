@@ -15,11 +15,11 @@ function Login() {
         const options = {
             method: 'GET',
             headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFsZW50aG9tYXM2NzhAZ21haWwuY29tIiwidXNlcklkIjoiMTMiLCJpYXQiOjE2NTM4ODgzODJ9.oyJBSTmkYH8oozq6LWrDrkZUXxEHi77tpxdM50NupcE'
+                Authorization: 'Bearer '+did_Token
             }
         };
 
-        fetch('https://sics-back.herokuapp.com/ api/home', options)
+        fetch('https://sics.onrender.com/v1/login', options)
             .then(response => response.json())
             .then(response => console.log(response))
             .catch(err => console.error(err));
@@ -36,8 +36,8 @@ function Login() {
             </Helmet>
             <img className="Logo" src={Logo} id={Logo} width="150" height="120"/><br/><br/>
             <form onSubmit={handleSubmit(onSubmit)}>
-
-                <input className="Email" type="email" placeholder="Email" id="Email" {...register("email")}
+            <label>Login to continue to</label><br/><label> SICS Dashboard</label><br/>
+                <input className="Email" type="email" placeholder="Email address" id="Email" {...register("email")}
                        required/><br></br><br></br>
                 <button className="login" type="submit">Login</button>
                 <br></br><br></br>
@@ -48,6 +48,8 @@ function Login() {
             </form>
 
         </div>
+
+
 
 
     )
